@@ -1,0 +1,6 @@
+target/
+output/
+test-output/
+ExtentReports/
+.idea/
+*.iml

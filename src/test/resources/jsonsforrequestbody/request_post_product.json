@@ -1,0 +1,13 @@
+{
+  "name": "checking",
+  "type": "whether",
+  "price": 1,
+  "shipping": 4,
+  "upc": "we",
+  "description": "can",
+  "manufacturer": "pass",
+  "model": "data",
+  "url": "directly",
+  "image": "from_json"
+  
+}
