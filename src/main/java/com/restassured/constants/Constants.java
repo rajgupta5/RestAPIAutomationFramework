@@ -1,25 +1,27 @@
 package com.restassured.constants;
 
-public class Constants {
+public final class Constants {
 	
 	private Constants() {
 		
 	}
 
-	public static final String EXCELPATH = System.getProperty("user.dir")+"/src/test/resources/testdata.xlsx";
+
+	private static final String USERDIRPATH = System.getProperty("user.dir");
+	public static final String EXCELPATH = USERDIRPATH+"/src/test/resources/testdata.xlsx";
 	public static final String TESTDATASHEETNAME = "TestData";
-	public static final String EXTENTREPORTPATH = System.getProperty("user.dir")+"/ExtentReports/index.html";
-	
-	public static final String EXTENTCONFIGFILEPATH = System.getProperty("user.dir")
+	public static final String EXTENTREPORTPATH = USERDIRPATH+"/ExtentReports/index.html";
+	public static final String CONFIGFILEPATH = USERDIRPATH +"\\src\\test\\resources\\configuration.properties";
+	public static final String EXTENTCONFIGFILEPATH = USERDIRPATH
 			+"/src/test/resources/extentreport.xml";
 	
-	public static final String SCHEMAVALIDATIONJSONPATH =  System.getProperty("user.dir")+
+	public static final String SCHEMAVALIDATIONJSONPATH =  USERDIRPATH+
 			"/src/test/resources/jsonsforschemavalidations/countrydetails_response_schema.json";
 	
 	public static final String RESPONSETXTPATH="./output/responses/";
 	
 	public static final String RUNMANAGERSHEET= "RUNMANAGER";
-	public static final String JSONSLOCATION=System.getProperty("user.dir")+"/src/test/resources/jsons";
+	public static final String JSONSLOCATION = USERDIRPATH + "/src/test/resources/jsons";
 	public static final String BASEURL = "https://restcountries.eu";
 	public static final String BASEURL_BESTBUY = "http://localhost:3030";
 	public static final String USERNAME ="";
@@ -36,8 +38,7 @@ public class Constants {
 	public static final String AUTH_ENDPOINT = "";
 	
 	//Request xml paths
-	public static final String REQUEST_JSON_FOLDER_PATH =  System.getProperty("user.dir")+
-			"/src/test/resources/jsonsforrequestbody/";
+	public static final String REQUEST_JSON_FOLDER_PATH =  USERDIRPATH + "/src/test/resources/jsonsforrequestbody/";
 
 
 }

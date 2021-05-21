@@ -9,7 +9,13 @@ import java.io.PrintStream;
 import java.io.StringWriter;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.HashMap;
+import java.util.Map;
 
+import com.restassured.enums.ConfigProperties;
+import com.restassured.services.Endpoints;
+import com.restassured.utils.ConfigReaderUtil;
+import com.sun.tools.jxc.ConfigReader;
 import org.apache.commons.io.output.WriterOutputStream;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
@@ -29,13 +35,36 @@ public class BaseTest {
 	
 	protected StringWriter writer;
 	protected PrintStream captor;
-	
-	
+	private Endpoints endPoints;
+	private Map<String, Object> scenarioContext;
+
+
+	public Endpoints getEndPoints() {
+		return endPoints;
+	}
+
+	public void setContext(String key, Object value) {
+		scenarioContext.put(key, value);
+	}
+
+	public Object getContext(String key){
+		return scenarioContext.get(key);
+	}
+
+	public Boolean isContains(String key){
+		return scenarioContext.containsKey(key);
+	}
 
 	@BeforeSuite
 	public void setUpSuite() {
+		writer = new StringWriter();
+		captor = new PrintStream(new WriterOutputStream(writer), true);
+		scenarioContext = new HashMap<>();
+		setContext("userId", ConfigReaderUtil.get(ConfigProperties.USERID));
+		setContext("username", ConfigReaderUtil.get(ConfigProperties.USERNAME));
+		setContext("password", ConfigReaderUtil.get(ConfigProperties.PASSWORD));
+		endPoints = new Endpoints(ConfigReaderUtil.get(ConfigProperties.URL), captor);
 		ExtentReport.initialize();
-		
 	}
 
 
@@ -43,16 +72,15 @@ public class BaseTest {
 	public void afterSuite() throws IOException  {
 		ExtentReport.report.flush();
 		File htmlFile = new File(Constants.EXTENTREPORTPATH);
-		Desktop.getDesktop().browse(htmlFile.toURI());
+		Desktop.getDesktop().browse(htmlFile.toURI()
+		);
 
 	}
 
 
 	@BeforeMethod
 	public void setUp() {
-		
-		writer = new StringWriter();
-		captor = new PrintStream(new WriterOutputStream(writer), true);
+
 	}
 
 	
@@ -98,7 +126,6 @@ public class BaseTest {
 	}
 	
 	public void writeRequestAndResponseInReport(String request,String response) {
-
 		LogStatus.info("---- Request ---");
 		formatAPIAndLogInReport(request);
 		LogStatus.info("---- Response ---");

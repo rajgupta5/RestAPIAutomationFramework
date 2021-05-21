@@ -46,7 +46,6 @@ public class ListenerClass implements ITestListener{
 	}
 
 	public void onTestFailure(ITestResult result) {
-		
 		LogStatus.fail(result.getMethod().getDescription()+ " is failed");
 		LogStatus.fail(result.getThrowable().toString());
 		ExtentReport.report.endTest(ExtentManager.getExtTest());
@@ -54,9 +53,7 @@ public class ListenerClass implements ITestListener{
 	}
 
 	public void onTestSkipped(ITestResult result) {
-		
 		LogStatus.skip(result.getMethod().getDescription()+ " is skipped");
-		
 		ExtentReport.report.endTest(ExtentManager.getExtTest());
 	}
 

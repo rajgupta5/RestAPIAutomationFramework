@@ -2,7 +2,7 @@ package com.restassured.reports;
 
 import com.relevantcodes.extentreports.ExtentTest;
 
-public class ExtentManager {
+public final class ExtentManager {
 	
 	private ExtentManager() {
 		

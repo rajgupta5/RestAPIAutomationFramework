@@ -7,9 +7,10 @@
 	</listeners>
   <test thread-count="5" name="Test">
     <classes>
-      <class name="com.restassured.testcases.RestCountriesTest"/>
-      <class name="com.restassured.testcases.BestBuyAPITests"></class>
-      <class name="com.restassured.testcases.BaseTest"/>
+        <class name="com.restassured.testcases.BookStoreTest"></class>
+        <class name="com.restassured.testcases.RestCountriesTest"/>
+        <class name="com.restassured.testcases.BestBuyAPITests"></class>
+        <class name="com.restassured.testcases.BaseTest"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
